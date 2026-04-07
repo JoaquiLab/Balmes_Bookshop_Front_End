@@ -8,7 +8,7 @@ export const UserActions = createActionGroup({
   events: {
     'Load User': props<{ credentials: LoginCredentials }>(),
     'Load User Success ': props<{ authResponse: AuthResponse }>(),
-    'Restore USer': props<{ userFromLocalStorage: User }>(),
+    'Restore User': props<{ userFromLocalStorage: User }>(),
     'Delete User': emptyProps(),
     'Load User Failure': props<{ message: string }>(),
   },

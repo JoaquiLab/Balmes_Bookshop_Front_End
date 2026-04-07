@@ -19,28 +19,56 @@
       "title": "Summa Theologies",
       "stock": "30",
       "gender": "Philosophy",
-      "author": "Saint Thomas Aquinas"
+      "author": "Saint Thomas Aquinas",
+      "image": "image-test-product.jpg"
     },
     {
       "pagesNumber": "300",
       "title": "Metaphysics",
       "stock": "30",
       "gender": "Philosophy",
-      "author": "Aristotle"
+      "author": "Aristotle",
+      "image": "image-test-product.jpg"
     },
     {
       "pagesNumber": "200",
       "title": "History of Spain",
       "stock": "2",
       "gender": "History",
-      "author": "Pio Moa"
+      "author": "Pio Moa",
+      "image": "image-test-product.jpg"
     },
     {
       "pagesNumber": "120",
       "title": "Napoleon",
       "stock": "10",
       "gender": "Biographic",
-      "author": "Jean Pierre"
+      "author": "Jean Pierre",
+      "image": "image-test-product.jpg"
+    },
+    {
+      "pagesNumber": "620",
+      "title": "Lenin",
+      "stock": "0",
+      "gender": "Biographic",
+      "author": "A bulgarian",
+      "image": "image-test-product.jpg"
+    },
+    {
+      "pagesNumber": "120",
+      "title": "Trotsky",
+      "stock": "1",
+      "gender": "Biographic",
+      "author": "A Ukranian",
+      "image": "image-test-product.jpg"
+    },
+    {
+      "pagesNumber": "120",
+      "title": "The Republic",
+      "stock": "133",
+      "gender": "Phylosophie",
+      "author": "Plato",
+      "image": "image-test-product.jpg"
     }
   ]
 }

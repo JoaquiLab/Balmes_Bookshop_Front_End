@@ -8,4 +8,7 @@ THE_AUTH_PAGE_COMPONENT
 </div>
 <div>
   <button (click)="login()">LOG IN</button>
+  @for (item of [5, 6, 7, 8]; track $index) {
+    <li>{{ item }}</li>
+  }
 </div>

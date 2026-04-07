@@ -1,4 +1,4 @@
-import { Book } from '@shared/interfaces';
+import { Book } from '@shared';
 
 export interface DashboardResponse {
   books: Book[];

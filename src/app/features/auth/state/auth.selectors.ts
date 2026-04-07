@@ -1,11 +1,12 @@
 import { createFeatureSelector, createSelector, emptyProps } from '@ngrx/store';
 import { AppGlobalState } from '../../../shared/interfaces/global-interfaces/global-store.interface';
 
-const selectFeature = (appGlobalState: AppGlobalState) => appGlobalState.user;
+const selectFeature = (appGlobalState: AppGlobalState) => appGlobalState.User;
 
 export const jwtTokenisLoadingSelector = createSelector(selectFeature, (state) => state.isLoading);
 
 export const jwtTokenSelector = createSelector(selectFeature, (state) => {
+  console.log('LOG: JWTTOKENSELECTORS-ENTRY')
   const jwtToken: string | undefined = state?.user?.jwtToken;
   if (jwtToken === undefined) {
     return null;

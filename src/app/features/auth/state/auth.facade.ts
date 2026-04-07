@@ -27,7 +27,7 @@ export class AuthFacade {
     const authUser: User | null =
       authUserFromLocalStore !== null ? JSON.parse(authUserFromLocalStore) : null;
     if (authUser) {
-      this.store.dispatch(UserActions.restoreUSer({ userFromLocalStorage: authUser }));
+      this.store.dispatch(UserActions.restoreUser({ userFromLocalStorage: authUser }));
     }
   }
 

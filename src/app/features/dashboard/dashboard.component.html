@@ -1,13 +1,9 @@
-<p>The books:</p>
-<p>
-  @for (book of booksSignal(); track $index) {
-    <li>{{ book | json }}</li>
-  } @empty {
-    <li>There are no items.</li>
-  }
-</p>
-
-<p>{{ interval$ | async }}</p>
-<dashboard-page></dashboard-page>
 <!--TODO Move this to a new component-->
+<search-bar (searchBarValueEmitter)="search($event)"></search-bar>
+
+<div style="display: grid; grid-template-columns: repeat(4, 0.1fr)">
+  @for (book of books | async; track $index) {
+    <product-card [book]="book"></product-card>
+  }
+</div>
 <button (click)="logOut()">LOG OUT</button>

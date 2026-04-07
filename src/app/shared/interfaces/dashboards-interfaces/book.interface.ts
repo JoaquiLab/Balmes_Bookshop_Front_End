@@ -4,4 +4,5 @@ export interface Book {
   stock: number;
   genre: string;
   author: string;
+  image: string
 }

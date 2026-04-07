@@ -24,7 +24,7 @@ export const sessionUserReducer = createReducer(
     isLoading: false,
     user: null,
   })),
-  on(UserActions.restoreUSer, (_state, { userFromLocalStorage }) => ({
+  on(UserActions.restoreUser, (_state, { userFromLocalStorage }) => ({
     ..._state,
     isLoading: false,
     user: userFromLocalStorage,

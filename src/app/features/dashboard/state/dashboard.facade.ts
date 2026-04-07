@@ -10,7 +10,7 @@ export class DashboardFacadeService {
   private readonly store = inject(Store);
   readonly books$ = this.store.select(booksSelector);
 
-  getBooks(): void {
-    this.store.dispatch(DashBoardActions.loadDashboard());
+  getBooks(key: string = ''): void {
+    this.store.dispatch(DashBoardActions.loadDashboard({key: key}));
   }
 }

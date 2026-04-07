@@ -28,7 +28,12 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/assets/images/balmes-libreria-logo.png"
+              {
+                "glob": "src/assets/images/*",
+                "input": "src"
+              },
+              "src/assets/images/balmes-libreria-logo.png",
+              "src/assets/images/image-test-product.jpg"
             ],
             "styles": [
               "src/styles.scss"
@@ -53,10 +58,16 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",

@@ -4,7 +4,7 @@ import { DashboardResponse } from '../interfaces/dashboard-data-response.interfa
 export const DashBoardActions = createActionGroup({
   source: 'dashboard',
   events: {
-    'Load Dashboard': emptyProps(),
+    'Load Dashboard': props<{ key: string }>(),
     'Load Dashboard Success': props<{ dashboardResponse: DashboardResponse }>(),
     'Load Dashboard Failure': props<{ message: string }>(),
   },

@@ -17,13 +17,14 @@
     "baseUrl": "./",
     "paths": {
       "@core/constants": ["src/app/core/constants/index.ts"],
-      "@shared/interfaces":["src/app/shared/interfaces/index.ts"],
+      "@shared":["src/app/shared/index.ts"],
       "@features/auth": ["src/app/features/auth/index.ts"],
       "@features/app-content": ["src/app/features/app-content/index.ts"],
       "@features/dashboard": ["src/app/features/dashboard/index.ts"],
       "@features/app-header": ["src/app/features/app-header/index.ts"],
       "@features/app-body": ["src/app/features/app-body/index.ts"],
       "@features/nav-menu": ["src/app/features/nav-menu/index.ts"],
+      "@env": ["src/environments/environment.ts"],
 
     }
   },

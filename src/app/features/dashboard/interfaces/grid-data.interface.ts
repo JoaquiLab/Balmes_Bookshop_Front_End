@@ -1,5 +1,5 @@
 import { User } from '@features/auth';
-import { Book } from '@shared/interfaces';
+import { Book } from '@shared';
 
 export interface DashboardState {
   books: Book[];

@@ -1,15 +1,16 @@
 import { inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { DashBoardActions } from './dashboard.actions';
-import { catchError, concat, concatMap, map, of } from 'rxjs';
+import { catchError, concat, concatMap, delay, exhaustMap, map, of, switchMap } from 'rxjs';
 import { DashboardService } from '../infrastructure/dashboard.service';
 
 export const getDashboardData = createEffect(
   (actions$ = inject(Actions), dashboardService = inject(DashboardService)) => {
     return actions$.pipe(
       ofType(DashBoardActions.loadDashboard),
-      concatMap(() =>
-        dashboardService.getData().pipe(
+      switchMap(({ key }) =>
+        dashboardService.getBooks(key).pipe(
+          delay(3000),
           map(
             (crudResponse) =>
               DashBoardActions.loadDashboardSuccess({ dashboardResponse: { books: crudResponse } }),

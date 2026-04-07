@@ -59,7 +59,7 @@ describe('auth-reducers', () => {
         email: 'test@email.com',
         jwtToken: 'testToken',
       };
-      const action = UserActions.restoreUSer({ userFromLocalStorage: fakeUserRestoreData });
+      const action = UserActions.restoreUser({ userFromLocalStorage: fakeUserRestoreData });
       const reducer = sessionUserReducer(sessionUserInitialState, action);
       const expectedState: UserState = {
         ...sessionUserInitialState,

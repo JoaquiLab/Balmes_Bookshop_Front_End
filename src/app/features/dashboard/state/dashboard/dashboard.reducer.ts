@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { DashboardState } from '../interfaces/grid-data.interface';
+import { DashboardState } from '../../interfaces/grid-data.interface';
 import { DashBoardActions } from './dashboard.actions';
 
 export const dashboardInitialState: DashboardState = {

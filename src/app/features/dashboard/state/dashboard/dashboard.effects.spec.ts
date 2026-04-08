@@ -1,5 +1,5 @@
 import { Action, props } from '@ngrx/store';
-import { DashboardState } from '../interfaces/grid-data.interface';
+import { DashboardState } from '../../interfaces/grid-data.interface';
 import * as dashboardReducer from './dashboard.reducer';
 import * as dashboardActions from './dashboard.actions';
 

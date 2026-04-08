@@ -1,5 +1,6 @@
 <!--TODO Move this to a new component-->
 <search-bar (searchBarValueEmitter)="search($event)"></search-bar>
+<category-menu [dataSource]="categoryTreeDataSource"></category-menu>
 
 <div style="display: grid; grid-template-columns: repeat(4, 0.1fr)">
   @for (book of books | async; track $index) {

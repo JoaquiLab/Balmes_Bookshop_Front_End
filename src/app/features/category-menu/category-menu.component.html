@@ -1,0 +1,22 @@
+<!-- TODO: UNHARDCODE -->
+<!-- TODO: ADD DYNAMIC STYLES -->
+<h3>CATEGORIES</h3>
+<mat-tree #categoryTree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button mat-icon-button></button>
+    {{ node.name }}
+  </mat-tree-node>
+  <mat-tree-node
+    *matTreeNodeDef="let node; when: hasChild"
+    matTreeNodePadding
+    matTreeNodeToggle
+    [cdkTreeNodeTypeaheadLabel]="node.name"
+  >
+    <button mat-icon-button>
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{ categoryTree.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+      </mat-icon>
+    </button>
+    {{ node.name }}
+  </mat-tree-node>
+</mat-tree>

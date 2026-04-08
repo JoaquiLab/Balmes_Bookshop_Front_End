@@ -1,4 +1,4 @@
-import { AppGlobalState } from '../../../shared/interfaces/global-interfaces/global-store.interface';
+import { AppGlobalState } from '../../../../shared/interfaces/global-interfaces/global-store.interface';
 import { createSelector } from '@ngrx/store';
 
 const selectFeature = (appGlobalState: AppGlobalState) => appGlobalState.Dashboard;

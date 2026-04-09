@@ -1,9 +1,9 @@
 import { LoginCredentials } from '../interfaces/login-credentials.interface';
 import { UserActions } from './auth.actions';
 import * as jwtTokenSelectors from './auth.selectors';
-import { Store, StoreRootModule } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { inject, Injectable } from '@angular/core';
-import { filter, Observable, skip } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AppGlobalState } from '../../../shared/interfaces/global-interfaces/global-store.interface';
 import { User } from '../interfaces/user.interface';
 

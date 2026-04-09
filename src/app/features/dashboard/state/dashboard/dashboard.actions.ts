@@ -1,4 +1,4 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
 import { DashboardResponse } from '../../interfaces/dashboard-data-response.interface';
 
 export const DashBoardActions = createActionGroup({

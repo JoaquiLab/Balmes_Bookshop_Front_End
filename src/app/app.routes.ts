@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { TaskPageComponent } from './features/dashboard/dashboard-UI/dashboard-page.component';
 import { AuthPageComponent } from './features/auth/auth-page.component';
 import { authGuard } from './core/guards/auth-guards/auth-guard';
 import { loginPageGuard } from './core/guards/dashboard-guards/login-page-guard';

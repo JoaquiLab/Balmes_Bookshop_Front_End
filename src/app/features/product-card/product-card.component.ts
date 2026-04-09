@@ -4,7 +4,7 @@ import { Book } from '@shared';
 import { TextOverflowPipe } from '../../shared/pipes/overflowText.pipe';
 
 @Component({
-  selector: 'product-card',
+  selector: 'cl-product-card',
   templateUrl: 'product-card.component.html',
   imports: [TextOverflowPipe, MatCardModule],
 })

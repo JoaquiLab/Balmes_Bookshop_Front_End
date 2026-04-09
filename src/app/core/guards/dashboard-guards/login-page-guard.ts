@@ -9,13 +9,13 @@ import { inject } from '@angular/core';
  * @param state
  * @returns
  */
-export const loginPageGuard: CanActivateFn = (route, state): boolean => {
+export const loginPageGuard: CanActivateFn = (): boolean => {
   const authtoken = localStorage.getItem('token');
   if (authtoken === null) {
     return true;
   }
   const authFacade: AuthFacade = inject(AuthFacade);
-  authFacade.restoreUser;
+  authFacade.restoreUser();
   const router: Router = inject(Router);
   //TODO FIND A SOLUTION TO THE BUG THAT A USER
   router.navigateByUrl('/task-page');

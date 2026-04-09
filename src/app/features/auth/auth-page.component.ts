@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthFacade } from './state/auth.facade';
-import { interval, Observable, of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'auth-page',
+  selector: 'cl-auth-page',
   templateUrl: 'auth-page.component.html',
   providers: [],
   imports: [ReactiveFormsModule],

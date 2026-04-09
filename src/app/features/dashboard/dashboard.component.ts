@@ -1,20 +1,17 @@
-import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
-import { TaskPageComponent } from './dashboard-UI/dashboard-page.component';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Book } from '@shared';
 import { AuthFacade } from '@features/auth';
 import { Router } from '@angular/router';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { DashboardFacadeService } from './state/dashboard/dashboard.facade';
-import { interval, Observable, of, Subscription } from 'rxjs';
-import { Signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Observable, Subscription } from 'rxjs';
 import { ProductCardComponent } from '../product-card';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { CategoryMenuComponent } from "../category-menu/category-menu.component";
 import { CategoryNode } from '.';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'cl-dashboard',
   templateUrl: './dashboard.component.html',
   imports: [SearchBarComponent, AsyncPipe, ProductCardComponent, CategoryMenuComponent],
 })
@@ -24,16 +21,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private router: Router = inject(Router);
   private fadaceService = inject(DashboardFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
-  protected categoryTreeDataSource: CategoryNode[] = []
-
-  constructor() {}
+  protected categoryTreeDataSource: CategoryNode[] = EXAMPLE_DATA
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((x) => x.unsubscribe);
   }
 
   ngOnInit(): void {
-    this.fadaceService.getBooks();
+    this.fadaceService.getBooks('');
   }
 
   search(searchBarValue: string): void {

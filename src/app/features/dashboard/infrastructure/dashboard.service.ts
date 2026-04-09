@@ -1,26 +1,35 @@
 import { inject, Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
-import { DashboardResponse } from '../interfaces/dashboard-data-response.interface';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '@shared';
 import { environment } from '@env';
+import { BooksCategoriesResponse } from '../interfaces/books-categories-response.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
   http: HttpClient = inject(HttpClient);
-
+  /**
+   * API call to get the books to show in the dashboard,
+   * @param keyToSearch book name or author used to get a concretly book, if is empty, will return all books
+   * @returns
+   */
   getBooks(keyToSearch: string): Observable<Book[]> {
     let endpoint: string;
     if (keyToSearch) {
       endpoint = `${environment.apiUrl}/books?name=${keyToSearch}`;
-    }
-    else{
+    } else {
       endpoint = `${environment.apiUrl}/books?name=`;
     }
     return this.http.get<Book[]>(endpoint);
   }
-
-
+  /**
+   * API call to GET the books categories data
+   * @returns
+   */
+  getCategoryTree(): Observable<BooksCategoriesResponse> {
+    const endpoint = `${environment.apiUrl}/books/categories}`;
+    return this.http.get<BooksCategoriesResponse>(endpoint);
+  }
 }

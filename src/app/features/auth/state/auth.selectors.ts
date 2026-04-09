@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector, emptyProps } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { AppGlobalState } from '../../../shared/interfaces/global-interfaces/global-store.interface';
 
 const selectFeature = (appGlobalState: AppGlobalState) => appGlobalState.User;

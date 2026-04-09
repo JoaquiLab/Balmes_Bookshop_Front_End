@@ -1,4 +1,3 @@
-import { createReducer } from '@ngrx/store';
 import { User, UserState } from '../interfaces/user.interface';
 import { UserActions } from './auth.actions';
 import { sessionUserInitialState, sessionUserReducer } from './auth.reducer';

@@ -1,10 +1,18 @@
 <!--TODO Move this to a new component-->
-<cl-search-bar (searchBarValueEmitter)="search($event)"></cl-search-bar>
-<cl-category-menu [dataSource]="categoryTreeDataSource"></cl-category-menu>
+<div class="dashboard-grid-class">
+  <cl-search-bar class="search-bar-class" (searchBarValueEmitter)="search($event)"></cl-search-bar>
+  <cl-category-menu
+    class="category-menu-class"
+    [dataSource]="categoryTreeDataSource"
+  ></cl-category-menu>
 
-<div style="display: grid; grid-template-columns: repeat(4, 0.1fr)">
-  @for (book of books | async; track $index) {
-    <cl-product-card [book]="book"></cl-product-card>
-  }
+  <!-- BOOKS GRID -->
+  <!-- TODO: Move to a new component -->
+  <div class="products-box-class">
+    @for (book of books | async; track $index) {
+      <cl-product-card [book]="book"></cl-product-card>
+    }
+  </div>
 </div>
+
 <button (click)="logOut()">LOG OUT</button>

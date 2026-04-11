@@ -7,12 +7,13 @@ import { DashboardFacadeService } from './state/dashboard/dashboard.facade';
 import { Observable, Subscription } from 'rxjs';
 import { ProductCardComponent } from '../product-card';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { CategoryMenuComponent } from "../category-menu/category-menu.component";
+import { CategoryMenuComponent } from '../category-menu/category-menu.component';
 import { CategoryNode } from '.';
 
 @Component({
   selector: 'cl-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
   imports: [SearchBarComponent, AsyncPipe, ProductCardComponent, CategoryMenuComponent],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
@@ -21,7 +22,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private router: Router = inject(Router);
   private fadaceService = inject(DashboardFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
-  protected categoryTreeDataSource: CategoryNode[] = EXAMPLE_DATA
+  protected categoryTreeDataSource: CategoryNode[] = EXAMPLE_DATA;
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((x) => x.unsubscribe);
@@ -42,7 +43,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/auth-page');
   }
 }
-
 
 const EXAMPLE_DATA: CategoryNode[] = [
   {

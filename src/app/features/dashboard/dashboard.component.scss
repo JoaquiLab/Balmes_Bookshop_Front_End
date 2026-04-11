@@ -1,0 +1,19 @@
+.dashboard-grid-class {
+  display: grid;
+  grid-template-areas:
+    'header1 header2 header3'
+    'menu1 content1 content2'
+    'footer1 footer2 footer3';
+}
+
+.search-bar-class {
+  grid-area: header1-start;
+}
+.category-menu-class {
+  grid-area: menu1-start;
+}
+.products-box-class {
+  grid-area: content1;
+  display: grid;
+  grid-template-columns: repeat(4, 0.1fr);
+}

@@ -5,14 +5,7 @@
     class="category-menu-class"
     [dataSource]="categoryTreeDataSource"
   ></cl-category-menu>
-
-  <!-- BOOKS GRID -->
-  <!-- TODO: Move to a new component -->
-  <div class="products-box-class">
-    @for (book of books | async; track $index) {
-      <cl-product-card [book]="book"></cl-product-card>
-    }
-  </div>
+  <cl-products-grid class="products-grid-class" [books]="(books | async) ?? []"></cl-products-grid>
 </div>
 
 <button (click)="logOut()">LOG OUT</button>

@@ -5,16 +5,16 @@ import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { DashboardFacadeService } from './state/dashboard/dashboard.facade';
 import { Observable, Subscription } from 'rxjs';
-import { ProductCardComponent } from '../product-card';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { CategoryMenuComponent } from '../category-menu/category-menu.component';
 import { CategoryNode } from '.';
+import { ProductsGridComponent } from '../products-grid';
 
 @Component({
   selector: 'cl-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
-  imports: [SearchBarComponent, AsyncPipe, ProductCardComponent, CategoryMenuComponent],
+  imports: [SearchBarComponent, AsyncPipe, CategoryMenuComponent, ProductsGridComponent],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];

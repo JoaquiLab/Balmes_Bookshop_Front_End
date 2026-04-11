@@ -12,8 +12,6 @@
 .category-menu-class {
   grid-area: menu1-start;
 }
-.products-box-class {
+.products-grid-class {
   grid-area: content1;
-  display: grid;
-  grid-template-columns: repeat(4, 0.1fr);
 }

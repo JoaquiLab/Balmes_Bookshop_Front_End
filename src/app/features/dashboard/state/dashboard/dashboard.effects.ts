@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { dashBoardActions } from './dashboard.actions';
-import { catchError, delay, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { DashboardService } from '../../infrastructure/dashboard.service';
 
 export const getDashboardData = createEffect(

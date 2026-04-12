@@ -1,3 +1,17 @@
+<!-- Search title -->
+<div class="text-searh-info-class">
+  <!-- TODO:  -->
+  @if (books.length > 0) {
+    <p>
+      {{ searchMetadata.currentPage }} - {{ searchMetadata.totalPages }} of
+      {{ searchMetadata.totalProducts }} results from
+      <span class="search-words-class">{{ searchMetadata.searchString }}</span>
+    </p>
+  } @else {
+    <p>Sorry we couldn't find what you're looking for</p>
+  }
+</div>
+
 <div class="products-box-class">
   @for (book of books; track $index) {
     <cl-product-card [book]="book"></cl-product-card>

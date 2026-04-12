@@ -7,4 +7,6 @@ export const isLoadingSelector = createSelector(selectFeature, (dashboard) => da
 
 export const booksSelector = createSelector(selectFeature, (dashboard) => dashboard.books);
 
+export const metadataSelector = createSelector(selectFeature, (dashboard) => dashboard.metadata);
+
 export const error = createSelector(selectFeature, (dashboard) => dashboard.error);

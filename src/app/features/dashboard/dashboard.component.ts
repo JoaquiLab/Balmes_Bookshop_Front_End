@@ -1,10 +1,10 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Book } from '@shared';
 import { AuthFacade } from '@features/auth';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { DashboardFacadeService } from './state/dashboard/dashboard.facade';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { CategoryMenuComponent } from '../category-menu/category-menu.component';
 import { CategoryNode } from '.';
@@ -16,17 +16,12 @@ import { ProductsGridComponent } from '../products-grid';
   styleUrl: './dashboard.component.scss',
   imports: [SearchBarComponent, AsyncPipe, CategoryMenuComponent, ProductsGridComponent],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
-  private subscriptions: Subscription[] = [];
+export class DashboardComponent implements OnInit {
   private authFacade = inject(AuthFacade);
-  private router: Router = inject(Router);
-  private fadaceService = inject(DashboardFacadeService);
+  private router = inject(Router);
+  protected fadaceService = inject(DashboardFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
   protected categoryTreeDataSource: CategoryNode[] = EXAMPLE_DATA;
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((x) => x.unsubscribe);
-  }
 
   ngOnInit(): void {
     this.fadaceService.getBooks('');

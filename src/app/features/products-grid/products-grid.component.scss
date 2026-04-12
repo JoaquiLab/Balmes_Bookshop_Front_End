@@ -1,0 +1,10 @@
+.products-box-class {
+  display: grid;
+  grid-template-columns: repeat(4, 0.1fr);
+}
+.text-searh-info-class {
+  display: flex;
+}
+.search-words-class {
+  font-weight: bold;
+}

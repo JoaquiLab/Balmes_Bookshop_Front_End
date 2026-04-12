@@ -5,7 +5,18 @@
     class="category-menu-class"
     [dataSource]="categoryTreeDataSource"
   ></cl-category-menu>
-  <cl-products-grid class="products-grid-class" [books]="(books | async) ?? []"></cl-products-grid>
+  <cl-products-grid
+    class="products-grid-class"
+    [books]="(books | async) ?? []"
+    [searchMetadata]="
+      (fadaceService.metadata$ | async) ?? {
+        totalProducts: 0,
+        currentPage: 0,
+        totalPages: 0,
+        searchString: '',
+      }
+    "
+  ></cl-products-grid>
 </div>
 
 <button (click)="logOut()">LOG OUT</button>

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { DashboardState } from '../../interfaces/grid-data.interface';
+import { DashboardState } from '../../interfaces/product-grid-data.interface';
 import * as dashboardReducer from './dashboard.reducer';
 import * as dashboardActions from './dashboard.actions';
 
@@ -11,9 +11,15 @@ describe('dashboard-reducers', () => {
   );
   describe('reducer-tests', () => {
     it('[success-dashboard-test] must return a books list', () => {
-      const successDashboardAction: Action = dashboardActions.DashBoardActions.loadDashboardSuccess(
+      const successDashboardAction: Action = dashboardActions.dashBoardActions.loadDashboardSuccess(
         {
           dashboardResponse: {
+            metadata: {
+              currentPage: 0,
+              searchString: '',
+              totalPages: 0,
+              totalProducts: 0,
+            },
             books: [
               {
                 pagesNumber: 10000,
@@ -32,6 +38,12 @@ describe('dashboard-reducers', () => {
         successDashboardAction,
       );
       const expectedResult: DashboardState = {
+        metadata: {
+          currentPage: 0,
+          searchString: '',
+          totalPages: 0,
+          totalProducts: 0,
+        },
         books: [
           {
             pagesNumber: 10000,

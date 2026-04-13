@@ -1,6 +1,7 @@
 <!--TODO Move this to a new component-->
 <div class="dashboard-grid-class">
   <cl-search-bar class="search-bar-class" (searchBarValueEmitter)="search($event)"></cl-search-bar>
+
   <cl-category-menu
     class="category-menu-class"
     [dataSource]="categoryTreeDataSource"

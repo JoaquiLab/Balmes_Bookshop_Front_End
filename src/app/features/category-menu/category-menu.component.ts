@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CategoryNode } from '@features/dashboard';
+import { CategoryTreeNode } from '@features/dashboard';
 
 @Component({
   selector: 'cl-category-menu',
@@ -10,9 +10,9 @@ import { CategoryNode } from '@features/dashboard';
   imports: [MatTreeModule, MatButtonModule, MatIconModule],
 })
 export class CategoryMenuComponent {
-  @Input() dataSource: CategoryNode[] = [];
+  @Input() dataSource: CategoryTreeNode[] = [];
 
-  protected childrenAccessor = (node: CategoryNode) => node.children ?? [];
-  protected hasChild = (_: number, node: CategoryNode) =>
+  protected childrenAccessor = (node: CategoryTreeNode) => node.children ?? [];
+  protected hasChild = (_: number, node: CategoryTreeNode) =>
     !!node.children && node.children.length > 0;
 }

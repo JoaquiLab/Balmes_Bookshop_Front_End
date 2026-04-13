@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { DashboardState } from '../../interfaces/product-grid-data.interface';
-import { dashBoardActions } from './dashboard.actions';
+import { gridProductActions } from './dashboard.actions';
 
 export const dashboardInitialState: DashboardState = {
   metadata: {
@@ -14,16 +14,16 @@ export const dashboardInitialState: DashboardState = {
   error: null,
 };
 
-export const dashboardReducer = createReducer(
+export const gridProductReducer = createReducer(
   dashboardInitialState,
-  on(dashBoardActions.loadDashboard, (_state) => ({ ..._state, isLoading: true })),
-  on(dashBoardActions.loadDashboardSuccess, (_state, data) => ({
+  on(gridProductActions.loadGridProduct, (_state) => ({ ..._state, isLoading: true })),
+  on(gridProductActions.loadGridProductSuccess, (_state, data) => ({
     ..._state,
-    metadata: data.dashboardResponse.metadata,
-    books: data.dashboardResponse.books,
+    metadata: data.gridProductResponse.metadata,
+    books: data.gridProductResponse.books,
     isLoading: false,
   })),
-  on(dashBoardActions.loadDashboardFailure, (_state, error) => ({
+  on(gridProductActions.loadGridProductFailure, (_state, error) => ({
     ..._state,
     isLoading: false,
     error: error.message,

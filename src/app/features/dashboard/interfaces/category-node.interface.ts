@@ -1,8 +1,8 @@
-export interface CategoryNode {
+export interface CategoryTreeNode {
   name: string;
-  children?: CategoryNode[];
+  children?: CategoryTreeNode[];
 }
-export interface CategoryNodeResponse {
-  categories: CategoryNode[];
+export interface CategoryMenuResponse {
+  categoryMenuNodes: CategoryTreeNode[];
 }
 

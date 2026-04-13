@@ -7,12 +7,12 @@ import { sessionUserReducer } from './features/auth/state/auth.reducer';
 import { provideEffects } from '@ngrx/effects';
 
 import * as jwtTokenEffects from './features/auth/state/auth.effects';
-import * as dashboardEffects from './features/dashboard/state/dashboard/dashboard.effects';
+import * as dashboardEffects from './features/dashboard/state/grid-product/dashboard.effects';
 
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor';
-import { dashboardReducer } from './features/dashboard/state/dashboard/dashboard.reducer';
+import { gridProductReducer } from './features/dashboard/state/grid-product/dashboard.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideState('User', sessionUserReducer),
-    provideState('Dashboard', dashboardReducer),
+    provideState('Dashboard', gridProductReducer),
     provideEffects(jwtTokenEffects),
     provideEffects(dashboardEffects),
     provideStoreDevtools({

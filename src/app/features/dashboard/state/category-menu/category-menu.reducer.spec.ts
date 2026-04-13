@@ -5,13 +5,13 @@ import * as dashboardActions from './dashboard.actions';
 
 describe('dashboard-reducers', () => {
   const action: Action = { type: 'unknow' };
-  const defaultDashBoardState: DashboardState = dashboardReducer.dashboardReducer(
+  const defaultDashBoardState: DashboardState = dashboardReducer.gridProductReducer(
     undefined,
     action,
   );
   describe('reducer-tests', () => {
     it('[dashboard-load-success--test] must return a books list', () => {
-      const successDashboardAction: Action = dashboardActions.dashBoardActions.loadDashboardSuccess(
+      const successDashboardAction: Action = dashboardActions.gridProductActions.loadDashboardSuccess(
         {
           dashboardResponse: {
             metadata: {
@@ -33,7 +33,7 @@ describe('dashboard-reducers', () => {
           },
         },
       );
-      const successDashboardRecucerResult: DashboardState = dashboardReducer.dashboardReducer(
+      const successDashboardRecucerResult: DashboardState = dashboardReducer.gridProductReducer(
         defaultDashBoardState,
         successDashboardAction,
       );
@@ -60,7 +60,7 @@ describe('dashboard-reducers', () => {
       expect(successDashboardRecucerResult).toEqual(expectedResult);
     });
     it('[dashboard-load--test] must return a books list', () => {
-      const successDashboardAction: Action = dashboardActions.dashBoardActions.loadDashboardSuccess(
+      const successDashboardAction: Action = dashboardActions.gridProductActions.loadDashboardSuccess(
         {
           dashboardResponse: {
             metadata: {
@@ -82,7 +82,7 @@ describe('dashboard-reducers', () => {
           },
         },
       );
-      const successDashboardRecucerResult: DashboardState = dashboardReducer.dashboardReducer(
+      const successDashboardRecucerResult: DashboardState = dashboardReducer.gridProductReducer(
         defaultDashBoardState,
         successDashboardAction,
       );

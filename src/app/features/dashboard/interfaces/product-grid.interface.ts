@@ -1,7 +1,7 @@
 import { Book } from '@shared';
 import { SearchMetadata } from '../../products-grid';
 
-export interface DashboardResponse {
+export interface GridProductResponse {
   metadata: SearchMetadata
   books: Book[];
 }

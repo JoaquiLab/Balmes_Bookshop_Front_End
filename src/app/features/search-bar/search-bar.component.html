@@ -1,0 +1,8 @@
+<div>
+  <form (keydown.enter)="stopFormPropagation($event)">
+    <mat-form-field>
+      <input (keyup.enter)="search($event)" [formControl]="barInput" matInput />
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+  </form>
+</div>

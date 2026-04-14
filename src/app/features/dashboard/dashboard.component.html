@@ -1,0 +1,10 @@
+<!--TODO Move this to a new component-->
+<cl-search-bar (searchBarValueEmitter)="search($event)"></cl-search-bar>
+<cl-category-menu [dataSource]="categoryTreeDataSource"></cl-category-menu>
+
+<div style="display: grid; grid-template-columns: repeat(4, 0.1fr)">
+  @for (book of books | async; track $index) {
+    <cl-product-card [book]="book"></cl-product-card>
+  }
+</div>
+<button (click)="logOut()">LOG OUT</button>

@@ -4,7 +4,7 @@
 
   <cl-category-menu
     class="category-menu-class"
-    [dataSource]="categoryTreeDataSource"
+    [dataSource]="(categoryTreeDataSource | async) ?? []"
   ></cl-category-menu>
   <cl-products-grid
     class="products-grid-class"

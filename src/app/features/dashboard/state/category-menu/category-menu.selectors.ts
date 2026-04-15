@@ -5,12 +5,12 @@ const selectFeature = (appGlobalState: AppGlobalState) => appGlobalState.Dashboa
 
 export const isLoadingSelector = createSelector(
   selectFeature,
-  (dashboardMenu) => dashboardMenu.isLoading,
+  (dashboardMenu) => dashboardMenu.isLoading
 );
 
 export const categoryNodesSelector = createSelector(
   selectFeature,
-  (dashboardMenu) => dashboardMenu.categoryTreeNodes,
+  (dashboardMenu) => dashboardMenu.categoryTreeNodes
 );
 
 export const errorSelector = createSelector(selectFeature, (dashboardMenu) => dashboardMenu.error);

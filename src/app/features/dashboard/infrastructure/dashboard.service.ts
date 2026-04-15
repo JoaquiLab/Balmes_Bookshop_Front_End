@@ -29,7 +29,7 @@ export class DashboardService {
    * @returns
    */
   getCategoryNode(): Observable<CategoryMenuResponse> {
-    const endpoint = `${environment.apiUrl}/books/categories}`;
+    const endpoint = `${environment.apiUrl}/books_categories}`;
     return this.http.get<CategoryMenuResponse>(endpoint);
   }
 }

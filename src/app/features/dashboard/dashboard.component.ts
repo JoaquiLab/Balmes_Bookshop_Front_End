@@ -9,6 +9,7 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { CategoryMenuComponent } from '../category-menu/category-menu.component';
 import { CategoryTreeNode } from '.';
 import { ProductsGridComponent } from '../products-grid';
+import { CategoryMenuFacadeService } from './state/category-menu/category-menu.facade';
 
 @Component({
   selector: 'cl-dashboard',
@@ -20,11 +21,13 @@ export class DashboardComponent implements OnInit {
   private authFacade = inject(AuthFacade);
   private router = inject(Router);
   protected fadaceService = inject(DashboardFacadeService);
+  protected categoryMenuService = inject(CategoryMenuFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
-  protected categoryTreeDataSource: CategoryTreeNode[] = EXAMPLE_DATA;
+  protected categoryTreeDataSource = this.categoryMenuService.categoryMenuNodes$;
 
   ngOnInit(): void {
     this.fadaceService.getBooks('');
+    this.categoryMenuService.getCategoryNode()
   }
 
   search(searchBarValue: string): void {
@@ -38,44 +41,3 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('/auth-page');
   }
 }
-
-const EXAMPLE_DATA: CategoryTreeNode[] = [
-  {
-    name: 'Los imprescindibles',
-    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
-  },
-  {
-    name: 'Religión',
-    children: [
-      {
-        name: 'Catequesis',
-      },
-      {
-        name: 'Historia de la iglesia',
-      },
-    ],
-  },
-  {
-    name: 'Humanidades',
-    children: [
-      {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
-      },
-      {
-        name: 'Ciencias Naturales',
-        children: [
-          {
-            name: 'Bioetica',
-          },
-          {
-            name: 'Evolucionismo',
-          },
-          {
-            name: 'Salud',
-          },
-        ],
-      },
-    ],
-  },
-];

@@ -13,6 +13,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor';
 import { gridProductReducer } from './features/dashboard/state/grid-product/dashboard.reducer';
+import { categoryMenuReducer } from './features/dashboard/state/category-menu/category-menu.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState('User', sessionUserReducer),
     provideState('Dashboard', gridProductReducer),
+    provideState('DashboardMenu', categoryMenuReducer),
     provideEffects(jwtTokenEffects),
     provideEffects(dashboardEffects),
     provideStoreDevtools({

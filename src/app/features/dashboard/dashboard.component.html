@@ -1,10 +1,22 @@
 <!--TODO Move this to a new component-->
-<cl-search-bar (searchBarValueEmitter)="search($event)"></cl-search-bar>
-<cl-category-menu [dataSource]="categoryTreeDataSource"></cl-category-menu>
+<search-bar (searchBarValueEmitter)="search($event)"></search-bar>
+<category-menu [dataSource]="categoryTreeDataSource"></category-menu>
 
-<div style="display: grid; grid-template-columns: repeat(4, 0.1fr)">
-  @for (book of books | async; track $index) {
-    <cl-product-card [book]="book"></cl-product-card>
-  }
+  <cl-category-menu
+    class="category-menu-class"
+    [dataSource]="(categoryTreeDataSource | async) ?? []"
+  ></cl-category-menu>
+  <cl-products-grid
+    class="products-grid-class"
+    [books]="(books | async) ?? []"
+    [searchMetadata]="
+      (fadaceService.metadata$ | async) ?? {
+        totalProducts: 0,
+        currentPage: 0,
+        totalPages: 0,
+        searchString: '',
+      }
+    "
+  ></cl-products-grid>
 </div>
 <button (click)="logOut()">LOG OUT</button>

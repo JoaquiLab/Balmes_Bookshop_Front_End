@@ -3,7 +3,7 @@ import { IMAGE } from '@core/constants';
 import { NavMenuComponent } from '@features/nav-menu';
 
 @Component({
-  selector: 'cl-header',
+  selector: 'app-header',
   templateUrl: 'app-header.component.html',
   imports: [NavMenuComponent],
 })

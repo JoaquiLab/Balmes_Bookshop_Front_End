@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject, runInInjectionContext } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthFacade } from '@features/auth';
 import { DashboardComponent } from '@features/dashboard';
 
 @Component({
-  selector: 'cl-body',
+  selector: 'app-body',
   templateUrl: 'app-body.component.html',
-  imports: [DashboardComponent],
+  imports:  [DashboardComponent]
 })
-export class AppBodyComponent {}
+export class AppBodyComponent {
+  constructor() {
+
+  }
+}

@@ -1,6 +1,6 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, State } from '@ngrx/store';
 import { UserActions } from './auth.actions';
-import { UserState } from '../interfaces/user.interface';
+import { UserState, User } from '../interfaces/user.interface';
 
 export const sessionUserInitialState: UserState = {
   user: null,

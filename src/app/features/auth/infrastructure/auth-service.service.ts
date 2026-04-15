@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Component, inject, Injectable } from '@angular/core';
 import { environment } from '@env';
 import { Observable } from 'rxjs';
 import { AuthResponse } from 'src/app/features/auth/interfaces/auth-response.interface';
@@ -13,8 +13,7 @@ export class AuthenticationService {
    * @returns
    */
   login(name: string, password: string): Observable<AuthResponse> {
-    console.log('name:', name)
-    console.log('password: ', password)
+    const backendApi: string = environment.apiUrl;
     const endpointPath = `${environment.apiUrl}/users?userId=1`;
     return this.http.get<AuthResponse>(endpointPath);
   }

@@ -5,13 +5,13 @@ import { MatIcon } from '@angular/material/icon';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'cl-search-bar',
+  selector: 'search-bar',
   templateUrl: 'search-bar.component.html',
   imports: [MatFormField, MatInput, MatIcon, ReactiveFormsModule],
 })
 export class SearchBarComponent {
-  barInput = new FormControl<string | null>('');
-  @Output() searchBarValueEmitter = new EventEmitter<string>();
+  barInput: FormControl<string | null> = new FormControl('');
+  @Output() searchBarValueEmitter: EventEmitter<string> = new EventEmitter();
 
   stopFormPropagation(event: Event): void {
     event.preventDefault();

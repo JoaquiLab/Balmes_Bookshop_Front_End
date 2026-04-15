@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, runInInjectionContext } from '@angular/core';
 
 @Component({
-  selector: 'cl-dashboard-page',
+  selector: 'dashboard-page',
   templateUrl: 'dashboard-page.component.html',
 })
-export class TaskPageComponent {}
+export class TaskPageComponent {
+  constructor() {
+
+  }
+}

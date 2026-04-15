@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CategoryNode } from '@features/dashboard';
 
 @Component({
-  selector: 'cl-category-menu',
+  selector: 'category-menu',
   templateUrl: './category-menu.component.html',
   imports: [MatTreeModule, MatButtonModule, MatIconModule],
 })

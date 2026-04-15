@@ -1,34 +1,37 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { TaskPageComponent } from './dashboard-UI/dashboard-page.component';
 import { Book } from '@shared';
 import { AuthFacade } from '@features/auth';
 import { Router } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { DashboardFacadeService } from './state/dashboard/dashboard.facade';
-import { Observable, Subscription } from 'rxjs';
+import { interval, Observable, of, Subscription } from 'rxjs';
+import { Signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ProductCardComponent } from '../product-card';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { CategoryMenuComponent } from "../category-menu/category-menu.component";
-import { CategoryNode } from '.';
+import { CategoryMenuComponent } from '../category-menu/category-menu.component';
+import { CategoryTreeNode } from '.';
+import { ProductsGridComponent } from '../products-grid';
+import { CategoryMenuFacadeService } from './state/category-menu/category-menu.facade';
 
 @Component({
-  selector: 'cl-dashboard',
+  selector: 'dashboard',
   templateUrl: './dashboard.component.html',
   imports: [SearchBarComponent, AsyncPipe, ProductCardComponent, CategoryMenuComponent],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   private authFacade = inject(AuthFacade);
-  private router: Router = inject(Router);
-  private fadaceService = inject(DashboardFacadeService);
+  private router = inject(Router);
+  protected fadaceService = inject(DashboardFacadeService);
+  protected categoryMenuService = inject(CategoryMenuFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
-  protected categoryTreeDataSource: CategoryNode[] = EXAMPLE_DATA
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((x) => x.unsubscribe);
-  }
+  protected categoryTreeDataSource = this.categoryMenuService.categoryMenuNodes$;
 
   ngOnInit(): void {
     this.fadaceService.getBooks('');
+    this.categoryMenuService.getCategoryNode()
   }
 
   search(searchBarValue: string): void {
@@ -42,45 +45,3 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/auth-page');
   }
 }
-
-
-const EXAMPLE_DATA: CategoryNode[] = [
-  {
-    name: 'Los imprescindibles',
-    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
-  },
-  {
-    name: 'Religión',
-    children: [
-      {
-        name: 'Catequesis',
-      },
-      {
-        name: 'Historia de la iglesia',
-      },
-    ],
-  },
-  {
-    name: 'Humanidades',
-    children: [
-      {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
-      },
-      {
-        name: 'Ciencias Naturales',
-        children: [
-          {
-            name: 'Bioetica',
-          },
-          {
-            name: 'Evolucionismo',
-          },
-          {
-            name: 'Salud',
-          },
-        ],
-      },
-    ],
-  },
-];

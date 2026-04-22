@@ -1,17 +1,18 @@
 .dashboard-grid-class {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    'header1 header2 header3'
-    'menu1 content1 content2'
-    'footer1 footer2 footer3';
+    'header1 header2 header3 header4'
+    'content1 content2 content3 content4'
+    'footer1 footer2 footer3 footer4';
 }
 
 .search-bar-class {
-  grid-area: header1-start;
+  grid-area: header2-start;
 }
 .category-menu-class {
-  grid-area: menu1-start;
+  grid-area: content2-start;
 }
 .products-grid-class {
-  grid-area: content1;
+  grid-area: content3-start;
 }

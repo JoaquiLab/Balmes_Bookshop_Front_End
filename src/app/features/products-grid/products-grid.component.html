@@ -1,30 +1,32 @@
-<!-- Search title -->
-<div class="text-searh-info-class">
-  <!-- TODO:  -->
-  @if (books.length > 0) {
-    <div class="product-box-class-control-bar-class">
-      <p>
-        {{ searchMetadata.currentPage }} - {{ searchMetadata.totalPages }} of
-        {{ searchMetadata.totalProducts }} results from
-        <span class="search-words-class">{{ searchMetadata.searchString }}</span>
-      </p>
-      <!--New sorting bar  -->
-      <div class="sorting-bar-class">
-        <mat-form-field appearance="outline" (click)="funtionToCall()">
-          <mat-select apareance [(ngModel)]="selectedValue" [ngModelOptions]="{ standalone: true }">
-            @for(option of options; track $index){
-              <mat-option [value]="option.value">{{option.label}}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+<div class="container-class">
+  <!-- Search title -->
+  <div class="text-searh-info-class">
+    <!-- TODO:  -->
+    @if (books.length > 0) {
+      <div class="product-box-class-control-bar-class">
+        <p>
+          {{ searchMetadata.currentPage }} - {{ searchMetadata.totalPages }} of
+          {{ searchMetadata.totalProducts }} results from
+          <span class="search-words-class">{{ searchMetadata.searchString }}</span>
+        </p>
+        <!--New sorting bar  -->
+        <div class="sorting-bar-class">
+          <mat-form-field appearance="outline" (click)="funtionToCall()">
+            <mat-select apareance [(ngModel)]="selectedValue" [ngModelOptions]="{ standalone: true }">
+              @for(option of options; track $index){
+                <mat-option [value]="option.value">{{option.label}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="products-box-class">
-      @for (book of books; track $index) {
-        <cl-product-card [book]="book"></cl-product-card>
-      }
-    </div>
-  } @else {
-    <p>Sorry we couldn't find what you're looking for</p>
-  }
+      <div class="products-box-class">
+        @for (book of books; track $index) {
+          <cl-product-card [book]="book"></cl-product-card>
+        }
+      </div>
+    } @else {
+      <p>Sorry we couldn't find what you're looking for</p>
+    }
+  </div>
 </div>

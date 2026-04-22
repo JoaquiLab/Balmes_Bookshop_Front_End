@@ -1,11 +1,16 @@
 <!--TODO Move this to a new component-->
-<div class="dashboard-grid-class">
-  <cl-search-bar class="search-bar-class" (searchBarValueEmitter)="search($event)"></cl-search-bar>
+<div class="dashboard-page-class">
+  <div class="side-menu-class">
+    <cl-search-bar
+      class="search-bar-class"
+      (searchBarValueEmitter)="search($event)"
+    ></cl-search-bar>
+    <cl-category-menu
+      class="category-menu-class"
+      [dataSource]="categoryTreeDataSource"
+    ></cl-category-menu>
+  </div>
 
-  <cl-category-menu
-    class="category-menu-class"
-    [dataSource]="categoryTreeDataSource"
-  ></cl-category-menu>
   <cl-products-grid
     class="products-grid-class"
     [books]="(books | async) ?? []"

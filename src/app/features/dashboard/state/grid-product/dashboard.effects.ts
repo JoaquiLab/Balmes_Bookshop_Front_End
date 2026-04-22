@@ -3,7 +3,6 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { gridProductActions } from './dashboard.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { DashboardService } from '../../infrastructure/dashboard.service';
-import { CategoryMenuResponse } from '../../interfaces/category-node.interface';
 
 export const getGridProductData = createEffect(
   (actions$ = inject(Actions), dashboardService = inject(DashboardService)) => {

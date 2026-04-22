@@ -1,6 +1,6 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
 import { GridProductResponse } from '../../interfaces/product-grid.interface';
-import { CategoryMenuResponse } from '../../interfaces/category-node.interface';
+
 
 export const gridProductActions = createActionGroup({
   source: 'gridProduct',

@@ -25,13 +25,9 @@ export class ProductsGridComponent {
     totalPages: 0,
     searchString: '',
   };
-  protected selectedValue = '';
+  @Input({ required: true })options: GridSortOption[] = []
 
-  protected options: { value: string | number; label: string }[] = [
-    { value: '1', label: 'Por los últimos' },
-    { value: '2', label: 'Ordenar por precio más alto' },
-    { value: '3', label: 'Ordenar por precio más bajo' },
-  ];
+  protected selectedValue = '';
 
   funtionToCall() {
     console.log('Form-Selected-Value: ', this.selectedValue);

@@ -13,6 +13,8 @@
 
   <cl-products-grid
     class="products-grid-class"
+    [options]="gridOptions"
+    [title]="gridTitle"
     [books]="(books | async) ?? []"
     [searchMetadata]="
       (fadaceService.metadata$ | async) ?? {

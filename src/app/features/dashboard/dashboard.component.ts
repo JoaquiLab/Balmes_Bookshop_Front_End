@@ -22,6 +22,12 @@ export class DashboardComponent implements OnInit {
   protected fadaceService = inject(DashboardFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
   protected categoryTreeDataSource: CategoryTreeNode[] = EXAMPLE_DATA;
+  protected gridOptions: { value: string | number; label: string }[] = [
+    { value: '1', label: 'Por los últimos' },
+    { value: '2', label: 'Ordenar por precio más alto' },
+    { value: '3', label: 'Ordenar por precio más bajo' },
+  ];
+  protected gridTitle = "A title"
 
   ngOnInit(): void {
     this.fadaceService.getBooks('');

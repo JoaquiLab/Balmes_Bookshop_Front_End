@@ -18,8 +18,9 @@ export interface SearchMetadata {
   imports: [ProductCardComponent, MatSelectModule, ReactiveFormsModule, FormsModule],
 })
 export class ProductsGridComponent {
-  @Input() books: Book[] = [];
-  @Input() searchMetadata: SearchMetadata = {
+  @Input({ required: true }) title = '';
+  @Input({ required: true }) books: Book[] = [];
+  @Input({ required: true }) searchMetadata: SearchMetadata = {
     totalProducts: 0,
     currentPage: 0,
     totalPages: 0,

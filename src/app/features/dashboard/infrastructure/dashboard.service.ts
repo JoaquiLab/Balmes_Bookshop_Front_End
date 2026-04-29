@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { GridProductResponse } from '../interfaces/product-grid.interface';
+import { GridProductResponse } from '../interfaces/product-grid-response.interface';
 import { environment } from '@env';
 import { CategoryMenuResponse } from '../interfaces/category-node.interface';
 

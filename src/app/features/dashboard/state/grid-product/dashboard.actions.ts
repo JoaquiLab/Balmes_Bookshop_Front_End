@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { GridProductResponse } from '../../interfaces/product-grid.interface';
+import { GridProductResponse } from '../../interfaces/product-grid-response.interface';
 
 
 export const gridProductActions = createActionGroup({

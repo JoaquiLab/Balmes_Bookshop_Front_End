@@ -3,6 +3,7 @@ import { Book } from '@shared';
 import { ProductCardComponent } from '../product-card';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GridSortOption } from './interfaces/product-grid-sort.interface';
 
 export interface SearchMetadata {
   totalProducts: number;
@@ -33,4 +34,6 @@ export class ProductsGridComponent {
   funtionToCall() {
     console.log('Form-Selected-Value: ', this.selectedValue);
   }
+
+
 }

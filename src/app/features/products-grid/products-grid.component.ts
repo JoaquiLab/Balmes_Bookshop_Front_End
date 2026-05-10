@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Book } from '@shared';
 import { ProductCardComponent } from '../product-card';
 import { MatSelectModule } from '@angular/material/select';
@@ -18,7 +18,7 @@ export interface SearchMetadata {
   styleUrl: 'products-grid.component.scss',
   imports: [ProductCardComponent, MatSelectModule, ReactiveFormsModule, FormsModule],
 })
-export class ProductsGridComponent {
+export class ProductsGridComponent implements OnInit {
   @Input({ required: true }) title = '';
   @Input({ required: true }) books: Book[] = [];
   @Input({ required: true }) searchMetadata: SearchMetadata = {
@@ -27,13 +27,20 @@ export class ProductsGridComponent {
     totalPages: 0,
     searchString: '',
   };
-  @Input({ required: true })options: GridSortOption[] = []
+  @Input({ required: true }) options: GridSortOption[] = [];
+  @Output() sortingChangeEmitter = new EventEmitter();
+  protected selectedValue: string | number = '';
 
-  protected selectedValue = '';
-
-  funtionToCall() {
-    console.log('Form-Selected-Value: ', this.selectedValue);
+  ngOnInit() {
+    this.selectedValue = this.options[0]?.value ?? '';
   }
 
-
+  changeSorting(): void {
+    //Check if the value is null
+    if (!this.selectedValue) {
+      return;
+    }
+    //Make a new Search
+    this.sortingChangeEmitter.emit(this.selectedValue);
+  }
 }

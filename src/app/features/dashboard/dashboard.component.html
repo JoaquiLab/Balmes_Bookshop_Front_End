@@ -1,16 +1,18 @@
 <!--TODO Move this to a new component-->
 <div class="dashboard-page-class">
   <div class="side-menu-class">
+    <!-- search bar -->
     <cl-search-bar
       class="search-bar-class"
       (searchBarValueEmitter)="search($event)"
     ></cl-search-bar>
+    <!-- Category Menu -->
     <cl-category-menu
       class="category-menu-class"
       [dataSource]="categoryTreeDataSource"
     ></cl-category-menu>
   </div>
-
+  <!-- Grid -->
   <cl-products-grid
     class="products-grid-class"
     [options]="gridOptions"

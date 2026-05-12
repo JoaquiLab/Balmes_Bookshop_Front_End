@@ -43,6 +43,17 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/auth-page');
   }
+
+  sortingChangeEmitter() {
+    //TODO:Launch a new search
+    // I do a new search
+    const differentSearchSorting = {
+      key: this.currentSearchKey,
+      sortType: 'price_asc',
+    };
+    this.fadaceService.getBooks(this.currentSearchKey, differentSearchSorting);
+
+  }
 }
 
 const EXAMPLE_DATA: CategoryTreeNode[] = [

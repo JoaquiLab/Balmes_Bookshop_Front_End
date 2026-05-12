@@ -18,7 +18,7 @@
 
         <!--Sorting bar  -->
         <div class="sorting-bar-class">
-          <mat-form-field appearance="outline" (click)="funtionToCall()">
+          <mat-form-field appearance="outline" (click)="changeSorting()">
             <mat-select
               apareance
               [(ngModel)]="selectedValue"
@@ -38,7 +38,6 @@
           <cl-product-card [book]="book"></cl-product-card>
         }
       </div>
-
     } @else {
       <p>Sorry we couldn't find what you're looking for</p>
     }

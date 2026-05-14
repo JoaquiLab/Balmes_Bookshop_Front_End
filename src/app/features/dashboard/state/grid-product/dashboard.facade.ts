@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { booksSelector, metadataSelector } from './dashboard.selectors';
 import { gridProductActions } from './dashboard.actions';
+import { SearchConfig } from '../../interfaces/product-grid-product-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,11 @@ export class DashboardFacadeService {
   readonly books$ = this.store.select(booksSelector);
   readonly metadata$ = this.store.select(metadataSelector)
 
-  getBooks(key: string): void {
-     this.store.dispatch(gridProductActions.loadGridProduct({key: key}));
+  /**
+   * Launches a request with the SearchConfig provided
+   * @param searchConfig
+   */
+  getBooks(searchConfig: SearchConfig): void {
+     this.store.dispatch(gridProductActions.loadGridProduct({searchConfig: searchConfig, }));
   }
 }

@@ -1,17 +1,24 @@
-.dashboard-grid-class {
+.dashboard-page-class {
   display: grid;
+  grid-template-columns: 250px 1fr;
   grid-template-areas:
-    'header1 header2 header3'
-    'menu1 content1 content2'
-    'footer1 footer2 footer3';
+    'header1 header2'
+    'content1 content2'
+    'footer1 footer2';
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
-.search-bar-class {
-  grid-area: header1-start;
+// .category-menu-class {
+//   grid-area: content2-start;
+// }
+
+.side-menu-class {
+  grid-area: content1-start;
 }
-.category-menu-class {
-  grid-area: menu1-start;
-}
+
 .products-grid-class {
-  grid-area: content1;
+  grid-area: content2-start;
 }

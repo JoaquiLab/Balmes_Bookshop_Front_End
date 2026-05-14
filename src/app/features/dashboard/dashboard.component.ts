@@ -9,7 +9,8 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { CategoryMenuComponent } from '../category-menu/category-menu.component';
 import { CategoryTreeNode } from '.';
 import { ProductsGridComponent } from '../products-grid';
-import { CategoryMenuFacadeService } from './state/category-menu/category-menu.facade';
+import { Order, SearchConfig } from './interfaces/product-grid-product-interfaces';
+import { GridSortOption } from '../products-grid/interfaces/product-grid-sort.interface';
 
 @Component({
   selector: 'cl-dashboard',
@@ -23,17 +24,48 @@ export class DashboardComponent implements OnInit {
   protected fadaceService = inject(DashboardFacadeService);
   protected categoryMenuService = inject(CategoryMenuFacadeService);
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
-  protected categoryTreeDataSource = this.categoryMenuService.categoryMenuNodes$;
+  protected categoryTreeDataSource: CategoryTreeNode[] = EXAMPLE_DATA;
+  protected gridOptions: GridSortOption[] = [
+    { value: Order.LATEST, label: 'Por los últimos' },
+    { value: Order.HIGH_PRICE, label: 'Ordenar por precio más alto' },
+    { value: Order.LOW_PRICE, label: 'Ordenar por precio más bajo' },
+  ];
+  protected gridTitle = 'A title';
+  protected currentSearchKey = '';
+  protected defaultSorting = Order.LATEST
 
   ngOnInit(): void {
-    this.fadaceService.getBooks('');
-    this.categoryMenuService.getCategoryNode()
+    //Initial search every time that the page is loaded
+    this.fadaceService.getBooks({ key: '', sortType: this.defaultSorting });
   }
 
-  search(searchBarValue: string): void {
-    this.fadaceService.getBooks(searchBarValue);
+  /**
+   * Makes new search with the current search key and default sorting
+   * @param searchConfig
+   */
+  searchBarUpdate(key: string): void {
+    this.currentSearchKey = key;
+    this.fadaceService.getBooks({
+      key: this.currentSearchKey,
+      sortType: Order.LATEST,
+    });
+  }
+  /**
+   * Makes new search with the current search key and a new sorting
+   * @param sortType
+   */
+  sortingUpdate(sortType: number): void {
+    const newSearchConfigWithNewSort: SearchConfig = {
+      key: this.currentSearchKey,
+      sortType: sortType
+    }
+    this.fadaceService.getBooks(newSearchConfigWithNewSort)
+    console.log('TEST_NEW_SEARCH_CONFIG = ', newSearchConfigWithNewSort);
   }
 
+  /**
+   * Delete the user, remove the token and drive the user to the login page
+   */
   logOut(): void {
     console.log('LOG OUTING OF THE SESSION');
     this.authFacade.deleteUser();

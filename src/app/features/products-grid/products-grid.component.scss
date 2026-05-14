@@ -2,9 +2,30 @@
   display: grid;
   grid-template-columns: repeat(4, 0.1fr);
 }
-.text-searh-info-class {
-  display: flex;
-}
+
 .search-words-class {
   font-weight: bold;
+}
+
+.product-box-class-control-bar-class {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.sorting-bar-class {
+  margin-left: auto;
+}
+
+.container-class {
+  display: flex;
+}
+
+mat-form-field {
+  height: 55.6px;
+}
+
+mat-select {
+  padding-left: 16px;
+  padding-right: 16px;
+  width: stretch;
 }

@@ -8,8 +8,8 @@ export const getGridProductData = createEffect(
   (actions$ = inject(Actions), dashboardService = inject(DashboardService)) => {
     return actions$.pipe(
       ofType(gridProductActions.loadGridProduct),
-      switchMap(({ key }) =>
-        dashboardService.getBooks(key).pipe(
+      switchMap(({ searchConfig }) =>
+        dashboardService.getBooks(searchConfig).pipe(
           map((endpointResponse) =>
             gridProductActions.loadGridProductSuccess({ gridProductResponse: endpointResponse }),
           ),

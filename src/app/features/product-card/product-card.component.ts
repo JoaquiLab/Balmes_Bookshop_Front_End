@@ -6,6 +6,7 @@ import { TextOverflowPipe } from '../../shared/pipes/overflowText.pipe';
 @Component({
   selector: 'cl-product-card',
   templateUrl: 'product-card.component.html',
+  styleUrl: 'product-card.component.scss',
   imports: [TextOverflowPipe, MatCardModule],
 })
 export class ProductCardComponent {

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { GridProductResponse } from '../interfaces/product-grid-response.interface';
+import { GridProductResponse, SearchConfig } from '../interfaces/product-grid-product-interfaces';
 import { environment } from '@env';
 import { CategoryMenuResponse } from '../interfaces/category-node.interface';
 
@@ -15,10 +15,10 @@ export class DashboardService {
    * @param keyToSearch book name or author used to get a concretly book, if is empty, will return all books
    * @returns
    */
-  getBooks(keyToSearch: string): Observable<GridProductResponse> {
+  getBooks(searchConfig: SearchConfig): Observable<GridProductResponse> {
     let endpoint: string;
-    if (keyToSearch) {
-      endpoint = `${environment.apiUrl}/books?name=${keyToSearch}`;
+    if (searchConfig.key) {
+      endpoint = `${environment.apiUrl}/books?name=${searchConfig.key}`;
     } else {
       endpoint = `${environment.apiUrl}/books?name=`;
     }

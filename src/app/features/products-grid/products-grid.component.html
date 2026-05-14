@@ -18,10 +18,11 @@
 
         <!--Sorting bar  -->
         <div class="sorting-bar-class">
-          <mat-form-field appearance="outline" (click)="changeSorting()">
+          <mat-form-field appearance="outline">
             <mat-select
+            (selectionChange)="changeSorting()"
               apareance
-              [(ngModel)]="selectedValue"
+              [(ngModel)]="sortingSelection"
               [ngModelOptions]="{ standalone: true }"
             >
               @for (option of options; track $index) {

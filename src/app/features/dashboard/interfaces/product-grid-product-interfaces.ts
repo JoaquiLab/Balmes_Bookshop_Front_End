@@ -1,9 +1,11 @@
-import { Book } from "@shared";
-import { SearchMetadata } from "../../products-grid";
+import { Book } from '@shared';
+import { SearchMetadata } from '../../products-grid';
 
 export interface SearchConfig {
-  key: string,
-  sortType: number
+  keyToSearch: string;
+  numberOfPages: number;
+  sortType: number;
+  page: number;
 }
 
 export enum Order {
@@ -13,6 +15,6 @@ export enum Order {
 }
 
 export interface GridProductResponse {
-  metadata: SearchMetadata
+  metadata: SearchMetadata;
   books: Book[];
 }

@@ -19,23 +19,32 @@ import { GridSortOption } from '../products-grid/interfaces/product-grid-sort.in
   imports: [SearchBarComponent, AsyncPipe, CategoryMenuComponent, ProductsGridComponent],
 })
 export class DashboardComponent implements OnInit {
-  private authFacade = inject(AuthFacade);
-  private router = inject(Router);
-  protected fadaceService = inject(DashboardFacadeService);
+  //SERVICES
+  private readonly authFacade = inject(AuthFacade);
+  private readonly router = inject(Router);
+  protected readonly fadaceService = inject(DashboardFacadeService);
+  // DATA SOURCER
   protected readonly books: Observable<Book[]> = this.fadaceService.books$;
-  protected categoryTreeDataSource: CategoryTreeNode[] = EXAMPLE_DATA;
-  protected gridOptions: GridSortOption[] = [
+  protected readonly categoryTreeDataSource: CategoryTreeNode[] = EXAMPLE_DATA;
+  //OPTIONS
+  protected readonly gridOptions: GridSortOption[] = [
     { value: Order.LATEST, label: 'Por los últimos' },
     { value: Order.HIGH_PRICE, label: 'Ordenar por precio más alto' },
     { value: Order.LOW_PRICE, label: 'Ordenar por precio más bajo' },
   ];
-  protected gridTitle = 'A title';
+  //INTERNAL VARIALBES
   protected currentSearchKey = '';
-  protected defaultSorting = Order.LATEST
+  protected readonly gridTitle = 'A title';
+  private readonly defaultSortingConf: SearchConfig = {
+    keyToSearch: '',
+    sortType: Order.LATEST,
+    numberOfPages: 20,
+    page: 1,
+  };
 
   ngOnInit(): void {
     //Initial search every time that the page is loaded
-    this.fadaceService.getBooks({ key: '', sortType: this.defaultSorting });
+    this.fadaceService.getBooks(this.defaultSortingConf);
   }
 
   /**
@@ -44,21 +53,27 @@ export class DashboardComponent implements OnInit {
    */
   searchBarUpdate(key: string): void {
     this.currentSearchKey = key;
-    this.fadaceService.getBooks({
-      key: this.currentSearchKey,
-      sortType: Order.LATEST,
-    });
+    const newSearchConf: SearchConfig = {
+      keyToSearch: this.currentSearchKey,
+      sortType: this.defaultSortingConf.sortType,
+      numberOfPages: this.defaultSortingConf.numberOfPages,
+      page: this.defaultSortingConf.page,
+    };
+    this.fadaceService.getBooks(newSearchConf);
+    console.log('SEARCH-BAR-UPDATE-TEST: ', newSearchConf);
   }
   /**
-   * Makes new search with the current search key and a new sorting
+   * Makes new search with the default search conf but, using the passed parameter as sorType
    * @param sortType
    */
   sortingUpdate(sortType: number): void {
     const newSearchConfigWithNewSort: SearchConfig = {
-      key: this.currentSearchKey,
-      sortType: sortType
-    }
-    this.fadaceService.getBooks(newSearchConfigWithNewSort)
+      keyToSearch: this.currentSearchKey,
+      sortType: sortType,
+      numberOfPages: this.defaultSortingConf.numberOfPages,
+      page: this.defaultSortingConf.page,
+    };
+    this.fadaceService.getBooks(newSearchConfigWithNewSort);
     console.log('TEST_NEW_SEARCH_CONFIG = ', newSearchConfigWithNewSort);
   }
 

@@ -16,14 +16,26 @@ export class DashboardService {
    * @returns
    */
   getBooks(searchConfig: SearchConfig): Observable<GridProductResponse> {
-    let endpoint: string;
-    if (searchConfig.key) {
-      endpoint = `${environment.apiUrl}/books?name=${searchConfig.key}`;
-    } else {
-      endpoint = `${environment.apiUrl}/books?name=`;
+    // https://www.barnesandnoble.com/s/edward+feser?Nrpp=40&Ns=P_Sale_Price%7C0&page=1
+
+    let endpoint: string = `${environment.apiUrl}/books?name=`;
+
+    if (searchConfig.keyToSearch) {
+      endpoint += `${searchConfig.keyToSearch}`;
     }
+    if (searchConfig.numberOfPages) {
+      endpoint += `&Nrpp=${searchConfig.numberOfPages}`;
+    }
+    if (searchConfig.sortType) {
+      endpoint += `&Ns=${searchConfig.sortType}`;
+    }
+    if (searchConfig.page) {
+      endpoint += `&page=${searchConfig.page}`;
+    }
+
     return this.http.get<GridProductResponse>(endpoint);
   }
+
   /**
    * API call to GET the books categories
    * @returns
